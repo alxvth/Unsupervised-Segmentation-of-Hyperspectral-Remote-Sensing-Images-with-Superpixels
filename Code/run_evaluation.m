@@ -24,8 +24,8 @@ for i = 1:length(dataset_loaders)
     
     % Superpixel segmetation
     
-    m = 0.2;
-    m_clust = 0.8;
+    m = 0.2;          % spatial distance
+    m_clust = 0.8;    % cluster distance
     
     for n_cluster = [10 50 100 250 500 1000, 2500, 5000]
         
@@ -54,9 +54,9 @@ for i = 1:length(dataset_loaders)
             mkdir(saveDir);
         end
 
-        savePath = saveDir  + "\" + saveName + '.tiff';
+        saveP = saveDir  + "\" + saveName + '.tiff';
 
-        t = Tiff(savePath, 'w');
+        t = Tiff(saveP, 'w');
         
         % Set TIFF tags for 32-bit integer storage
         tagstruct.ImageLength = size(out, 1);
@@ -74,7 +74,7 @@ for i = 1:length(dataset_loaders)
         t.write(out);
         t.close();
         
-        fprintf('Saved outpt image: ' + savePath +'\n');
+        fprintf('Saved outpt image: ' + saveP +'\n');
     end
 
 end
