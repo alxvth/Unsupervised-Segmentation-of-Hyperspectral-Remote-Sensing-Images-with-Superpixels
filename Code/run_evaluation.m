@@ -74,7 +74,7 @@ for i = 1:length(dataset_loaders)
         t.write(out);
         t.close();
         
-        fprintf('Saved outpt image: ' + saveP +'\n');
+        fprintf('Saved outpt image: %s\n', saveP);
     end
 
 end
