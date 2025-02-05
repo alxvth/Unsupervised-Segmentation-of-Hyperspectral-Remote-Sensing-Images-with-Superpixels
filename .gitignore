@@ -1,0 +1,46 @@
+# MATLAB backup and autosave files
+*.asv
+*~
+*.bak
+
+# MATLAB workspace and log files
+*.mat
+*.fig
+*.log
+*.out
+*.err
+
+# Compiled MATLAB scripts and MEX files
+*.p
+*.mex*
+*.mlappinstall
+
+# Simulink auto-generated code and project files
+slprj/
+codegen/
+mex/
+
+# Simulink cache and auto-save files
+*.slxc
+*.slx.autosave
+
+# MATLAB AppDesigner auto-generated files
+*.mlapp
+*.mlpkginstall
+
+# MATLAB Live Scripts backup files
+*.mlx~
+
+# MATLAB preferences and history
+matlabprefs.mat
+history.m
+
+# User-specific settings
+*.prj
+*.mlproj
+*.mldatx
+
+# Project-specific
+Code/__pycache__
+Output
+Datasets
