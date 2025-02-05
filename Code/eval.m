@@ -27,7 +27,7 @@ for i = 1:length(dataset_loaders)
     m = 0.2;
     m_clust = 0.8;
     
-    for n_cluster = [10 50 100 250 500 1000, 2500]
+    for n_cluster = [10 50 100 250 500 1000, 2500, 5000]
         
         [sp_labels, sp_centers] = augmented_h_slic(image,...
             n_cluster,...
@@ -54,7 +54,9 @@ for i = 1:length(dataset_loaders)
             mkdir(saveDir);
         end
 
-        t = Tiff(saveDir  + "\" + saveName + '.tiff', 'w');
+        savePath = saveDir  + "\" + saveName + '.tiff';
+
+        t = Tiff(savePath, 'w');
         
         % Set TIFF tags for 32-bit integer storage
         tagstruct.ImageLength = size(out, 1);
@@ -72,7 +74,7 @@ for i = 1:length(dataset_loaders)
         t.write(out);
         t.close();
         
-        fprintf('Saved outpt image\n');
+        fprintf('Saved outpt image: ' + savePath +'\n');
     end
 
 end
