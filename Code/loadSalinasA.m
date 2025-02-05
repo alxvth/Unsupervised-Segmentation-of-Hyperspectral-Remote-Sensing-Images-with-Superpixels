@@ -1,8 +1,9 @@
-function [dataset_images, dataset_gt, bg_value] = loadSalinasA()
+function [dataset_images, dataset_gt, bg_value, name] = loadSalinasA()
     
     bg_value = 0;
     dataset_images = cell(0);
     dataset_gt = cell(0);
+    name = "SalinasA";
     
     path_dataset = "..\Datasets\SalinasA\";
     

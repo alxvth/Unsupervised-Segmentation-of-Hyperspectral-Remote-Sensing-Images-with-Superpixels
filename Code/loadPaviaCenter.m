@@ -1,8 +1,9 @@
-function [dataset_images, dataset_gt, bg_value] = loadPaviaCenter()
+function [dataset_images, dataset_gt, bg_value, name] = loadPaviaCenter()
     
     bg_value = 0;
     dataset_images = cell(0);
     dataset_gt = cell(0);
+    name = "PaviaC";
 
     path_dataset = "..\Datasets\Pavia\";
     

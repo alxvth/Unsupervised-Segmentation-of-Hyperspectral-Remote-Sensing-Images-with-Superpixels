@@ -10,10 +10,10 @@ rng(123);
 
 %% Load dataset
 
-% [dataset_images, dataset_gt, bg_value] = loadPaviaCenter();
-% [dataset_images, dataset_gt, bg_value] = loadPaviaUniversity();
-[dataset_images, dataset_gt, bg_value] = loadSalinas();
-% [dataset_images, dataset_gt, bg_value] = loadSalinasA();
+% [dataset_images, dataset_gt, bg_value, name] = loadPaviaCenter();
+% [dataset_images, dataset_gt, bg_value, name] = loadPaviaUniversity();
+[dataset_images, dataset_gt, bg_value, name] = loadSalinas();
+% [dataset_images, dataset_gt, bg_value, name] = loadSalinasA();
 
 %% Superpixel segmetation
 

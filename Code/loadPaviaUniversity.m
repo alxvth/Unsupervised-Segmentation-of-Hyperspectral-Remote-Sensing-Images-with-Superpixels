@@ -1,8 +1,9 @@
-function [dataset_images, dataset_gt, bg_value] = loadPaviaUniversity()
+function [dataset_images, dataset_gt, bg_value, name] = loadPaviaUniversity()
     
     bg_value = 0;
     dataset_images = cell(0);
     dataset_gt = cell(0);
+    name = "PaviaU";
 
     path_dataset = "..\Datasets\Pavia_university\";
     

@@ -1,9 +1,10 @@
-function [dataset_images, dataset_gt, bg_value] = loadSalinas()
+function [dataset_images, dataset_gt, bg_value, name] = loadSalinas()
     
     bg_value = 0;
     dataset_images = cell(0);
     dataset_gt = cell(0);
-    
+    name = "Salinas";
+
     path_dataset = "..\Datasets\Salinas\";
     
     image = load(path_dataset + "Salinas_corrected.mat");
