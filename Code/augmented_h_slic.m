@@ -24,7 +24,7 @@ function [superpixels_label, cluster_centers] = augmented_h_slic(image, n_cluste
     arguments
         image
         n_cluster {mustBePositive}
-        m (1,1) double {mustBePositive}
+        m (1,1) double {mustBeNonnegative}
         m_clust (1,1) double {mustBeNonnegative}
         opts.bandwidth (1,1) double = NaN
         opts.quantile (1,1) double {mustBeGreaterThan(opts.quantile,0), mustBeLessThanOrEqual(opts.quantile,1)} = 0.05
@@ -40,8 +40,8 @@ function [superpixels_label, cluster_centers] = augmented_h_slic(image, n_cluste
         throw(ME)
     end
     
-    if(m <= 0)
-        ME = MException('Variables:valuesNotGood', 'm must be > 0');
+    if(m < 0)
+        ME = MException('Variables:valuesNotGood', 'm must be >= 0');
         throw(ME)
     end
 
