@@ -24,10 +24,20 @@ for i = 1:length(dataset_loaders)
     
     % Superpixel segmetation
     
-    m = 0.2;          % spatial distance
-    m_clust = 0.8;    % cluster distance
-    
-    for n_cluster = [10 50 100 250 500 1000, 2500, 5000]
+    ms = [0.0 0.1 0.2];          % spatial distance
+    m_clusts = [0.4 0.6 0.8];    % cluster distance
+    n_clusters = [10 50 100 250 500 1000, 2500, 5000];
+
+    % Generate all combinations
+    [MS, MCS, NCS] = ndgrid(ms, m_clusts, n_clusters);
+    combinations = [MS(:), MCS(:), NCS(:)]; % Convert grids to a list
+
+    for i = 1:size(combinations, 1)
+        m = combinations(i, 1);
+        m_clust = combinations(i, 2);
+        n_cluster = combinations(i, 3);
+
+        fprintf('Combination: m %f, m_clust %f, n_cluster %i)\n', m, m_clust, n_cluster);
         
         [sp_labels, sp_centers] = augmented_h_slic(image,...
             n_cluster,...
@@ -46,9 +56,9 @@ for i = 1:length(dataset_loaders)
         % Save output
         out = consistent_random_remap(int32(sp_labels));
         
-        saveName = "m" + num2str(m) + "_mc" + num2str(m_clust) + "_nc" + num2str(n_cluster);
+        saveName = "_nc" + num2str(n_cluster);
         
-        saveDir = '..\Output\' + datase_name;
+        saveDir = '..\Output\' + datase_name + "\" + "m" + num2str(m) + "_mc" + num2str(m_clust);
 
         if ~exist(saveDir, 'dir')
             mkdir(saveDir);
