@@ -32,10 +32,10 @@ for i = 1:length(dataset_loaders)
     [MS, MCS, NCS] = ndgrid(ms, m_clusts, n_clusters);
     combinations = [MS(:), MCS(:), NCS(:)]; % Convert grids to a list
 
-    for i = 1:size(combinations, 1)
-        m = combinations(i, 1);
-        m_clust = combinations(i, 2);
-        n_cluster = combinations(i, 3);
+    for j = 1:size(combinations, 1)
+        m = combinations(j, 1);
+        m_clust = combinations(j, 2);
+        n_cluster = combinations(j, 3);
 
         fprintf('Combination: m %f, m_clust %f, n_cluster %i)\n', m, m_clust, n_cluster);
         
