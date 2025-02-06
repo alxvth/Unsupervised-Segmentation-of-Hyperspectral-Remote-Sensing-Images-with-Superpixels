@@ -61,7 +61,7 @@ for i = 1:length(dataset_loaders)
         % Save output
         out = consistent_random_remap(int32(sp_labels));
         
-        saveName = "_nc" + num2str(n_cluster);
+        saveName = "nc" + num2str(n_cluster);
         
         saveDir = '..\Output\' + datase_name + "\" + "m" + num2str(m) + "_mc" + num2str(m_clust);
 
