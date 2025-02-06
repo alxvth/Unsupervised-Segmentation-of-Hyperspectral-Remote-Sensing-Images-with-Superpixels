@@ -59,37 +59,33 @@ for i = 1:length(dataset_loaders)
         UE = undersegmentation_error(sp_labels, gt, percentange, bg_value);
         
         % Save output
-        out = consistent_random_remap(int32(sp_labels));
-        
         saveName = "nc" + num2str(n_cluster);
-        
-        saveDir = '..\Output\' + datase_name + "\" + "m" + num2str(m) + "_mc" + num2str(m_clust);
+        saveDir = '..\Output\' + datase_name + "\" + "m" + num2str(m, '%.1f') + "_mc" + num2str(m_clust, '%.1f');
 
         if ~exist(saveDir, 'dir')
             mkdir(saveDir);
         end
 
-        saveP = saveDir  + "\" + saveName + '.tiff';
+        % Random labels
+        out_random_labels = consistent_random_remap(int32(sp_labels));
 
-        t = Tiff(saveP, 'w');
+        savePath_random = saveDir  + "\random_" + saveName + '.tiff';
+        saveAsTiff(out_random_labels, savePath_random);
+
+        fprintf('Saved outpt image: %s\n', savePath_random);
+
+        % Average pixel intensity in each superpixel
+        avg_channel = 100;
+        imageStats = regionprops(sp_labels, image(:,:,avg_channel), 'MeanIntensity');
+        out_avg_values = zeros(size(sp_labels));
+        for k = 1:numel(imageStats)
+            out_avg_values(sp_labels == k) = imageStats(k).MeanIntensity;
+        end
+                
+        savePath_avg = saveDir  + "\avg_" + saveName + '.tiff';
+        saveAsTiff(out_avg_values, savePath_avg);
         
-        % Set TIFF tags for 32-bit integer storage
-        tagstruct.ImageLength = size(out, 1);
-        tagstruct.ImageWidth = size(out, 2);
-        tagstruct.SampleFormat = Tiff.SampleFormat.Int;  % Store as integer
-        tagstruct.BitsPerSample = 32;  % 32-bit
-        tagstruct.SamplesPerPixel = 1;
-        tagstruct.Photometric = Tiff.Photometric.MinIsBlack;
-        tagstruct.PlanarConfiguration = Tiff.PlanarConfiguration.Chunky;
-        
-        % Apply tags
-        t.setTag(tagstruct);
-        
-        % Write data
-        t.write(out);
-        t.close();
-        
-        fprintf('Saved outpt image: %s\n', saveP);
+        fprintf('Saved outpt image: %s\n', savePath_avg);
     end
 
 end
