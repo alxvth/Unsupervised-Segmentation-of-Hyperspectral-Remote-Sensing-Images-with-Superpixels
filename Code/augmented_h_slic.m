@@ -253,8 +253,12 @@ function [superpixels_label, cluster_centers] = augmented_h_slic(image, n_cluste
     new_cluster_centers = zeros([0, size(aux_image, 2)+2]);
     new_superpixels_label = zeros(size(superpixels_label));
     current_lab = 1;
-    for i = 1:size(unique(superpixels_label))
-        [current_sup, num_reg] = bwlabel(superpixels_label == i);
+
+    unique_labels = unique(superpixels_label);
+    num_unique = size(unique_labels, 1);
+    for i = 1:num_unique
+        unique_label = unique_labels(i, :);
+        [current_sup, num_reg] = bwlabel(superpixels_label == unique_label);
         for j = 1:num_reg
             cluster_indexes = find(current_sup == j);
             if(not(isempty(cluster_indexes)))
