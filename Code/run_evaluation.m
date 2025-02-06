@@ -9,7 +9,7 @@ pyenv(Version="C:\\Users\\avieth\\AppData\\Local\\miniconda3\\envs\\MATLAB\\pyth
 py.importlib.import_module('python_utility');
 rng(123);
 
-dataset_loaders = {@loadPines, @loadPaviaCenter, @loadPaviaUniversity, @loadSalinas, @loadSalinasA};
+dataset_loaders = {@loadSalinas, @loadSalinasA, @loadPines, @loadPaviaCenter, @loadPaviaUniversity};
 
 for i = 1:length(dataset_loaders)
     % Load dataset
