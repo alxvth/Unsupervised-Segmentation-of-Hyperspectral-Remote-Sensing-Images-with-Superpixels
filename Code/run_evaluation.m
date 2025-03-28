@@ -5,7 +5,7 @@ close all
 
 %% Import python utility
 
-pyenv(Version="C:\\Users\\avieth\\AppData\\Local\\miniconda3\\envs\\MATLAB\\python.exe")
+pyenv(Version="C:\\Users\\avieth\\AppData\\Local\\miniconda3\\envs\\MATLAB\\python.exe", ExecutionMode="OutOfProcess")
 py.importlib.import_module('python_utility');
 rng(123);
 
