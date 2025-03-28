@@ -26,7 +26,7 @@ for i = 1:length(dataset_loaders)
     
     ms = [0.0 0.1 0.2];          % spatial distance
     m_clusts = [0.4 0.6 0.8];    % cluster distance
-    n_clusters = [10 50 100 250 500 1000, 2500, 5000];
+    n_clusters = [1 5 10 25 50 100 250 500 1000, 2500, 5000];
 
     % Generate all combinations
     [MS, MCS, NCS] = ndgrid(ms, m_clusts, n_clusters);
